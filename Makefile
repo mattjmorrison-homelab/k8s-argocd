@@ -1,4 +1,4 @@
-.PHONY: install upgrade
+.PHONY: install upgrade check
 
 install:
 	kubectl apply -f manifests/namespace.yaml
@@ -9,3 +9,6 @@ install:
 
 upgrade:
 	kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.14.0/manifests/install.yaml
+
+check:
+	nix shell nixpkgs#kubernetes-helm nixpkgs#bats nixpkgs#yq-go -c bats manifests/tests

@@ -1,5 +1,5 @@
 apiVersion: v2
 name: homelab-argocd
-description: ArgoCD supporting config (notifications, webhook, ingress) — the argocd-server/controller pods themselves come from the upstream install.yaml, not this chart
+description: ArgoCD supporting config (notifications, webhook, ingress, repo-creds) — the argocd-server/controller pods themselves come from the upstream install.yaml, not this chart
 version: 0.1.0
 appVersion: "1.0.0"
