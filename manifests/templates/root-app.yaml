@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison-homelab/homelab-apps
+    repoURL: https://github.com/mattjmorrison-homelab/k8s-apps
     targetRevision: HEAD
     path: .
   destination:
