@@ -20,6 +20,10 @@ make upgrade
 
 ArgoCD handles its own rolling update.
 
+## CI
+
+Pull requests run `mattjmorrison-homelab/actions-helm` (helm lint, `helm template`, and a server-side dry-run) via `.github/workflows/check.yml`.
+
 ## What comes next
 
 - `homelab-apps` — an "App of Apps" repo that ArgoCD watches; contains an ArgoCD `Application` manifest for each tool to deploy
