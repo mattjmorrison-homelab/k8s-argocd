@@ -1,4 +1,4 @@
-# homelab-argocd
+# k8s-argocd
 
 [Homelab Docs](https://github.com/mattjmorrison/homelab/blob/main/docs/INDEX.md)
 
@@ -34,10 +34,10 @@ Pull requests run `mattjmorrison-homelab/actions-helm` (helm lint, `helm templat
 
 ## What comes next
 
-- `homelab-apps` — an "App of Apps" repo that ArgoCD watches; contains an ArgoCD `Application` manifest for each tool to deploy
-- `homelab-<tool>` — one repo per tool; each has its own manifests and lifecycle
+- `k8s-apps` — an "App of Apps" repo that ArgoCD watches; contains an ArgoCD `Application` manifest for each tool to deploy
+- `k8s-<tool>` — one repo per tool; each has its own manifests and lifecycle
 
-To add a new tool: create a `homelab-<tool>` repo, then add an `Application` manifest pointing at it in `homelab-apps`. ArgoCD picks it up automatically.
+To add a new tool: create a `k8s-<tool>` repo, then add an `Application` manifest pointing at it in `k8s-apps`. ArgoCD picks it up automatically.
 
 ## OCI Helm Registry Credentials (repo-creds)
 
