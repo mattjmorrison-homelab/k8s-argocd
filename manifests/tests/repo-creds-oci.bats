@@ -50,34 +50,34 @@ setup() {
 
 @test "renders argocd-repo-creds-oci ExternalSecret templating a repo-creds Secret from OpenBao" {
   es_namespace=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .metadata.namespace
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.metadata.namespace
   ' -)
   es_label=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.target.template.metadata.labels["argocd.argoproj.io/secret-type"]
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.target.template.metadata.labels["argocd.argoproj.io/secret-type"]
   ' -)
   es_type=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.target.template.data.type
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.target.template.data.type
   ' -)
   es_enable_oci=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.target.template.data.enableOCI
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.target.template.data.enableOCI
   ' -)
   es_url=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.target.template.data.url
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.target.template.data.url
   ' -)
   es_username=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.target.template.data.username
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.target.template.data.username
   ' -)
   es_password=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.target.template.data.password
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.target.template.data.password
   ' -)
   es_remote_key=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.data[0].remoteRef.key
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.data[0].remoteRef.key
   ' -)
   es_store_name=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.secretStoreRef.name
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.secretStoreRef.name
   ' -)
   es_store_kind=$(echo "$RENDERED" | yq eval-all '
-    select(.kind == "ExternalSecret" and .spec.data[0].remoteRef.property == "ZOT_CI_PASSWORD") | .spec.secretStoreRef.kind
+    select(.kind == "ExternalSecret" and .metadata.name == "argocd-repo-creds-oci") |.spec.secretStoreRef.kind
   ' -)
 
   [ "$es_namespace" = "argocd" ]
@@ -87,7 +87,7 @@ setup() {
   [ "$es_url" = "registry.morrisons.site/charts" ]
   [ "$es_username" = "ci" ]
   [ -n "$es_password" ]
-  [ "$es_remote_key" = "homelab/argocd" ]
+  [ "$es_remote_key" = "homelab/k8s-argocd/zot-ci-password" ]
   [ "$es_store_name" = "argocd-repo-creds-oci-openbao" ]
   [ "$es_store_kind" = "SecretStore" ]
 }
