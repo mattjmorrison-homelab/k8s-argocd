@@ -85,9 +85,9 @@ setup() {
   [ "$es_type" = "helm" ]
   [ "$es_enable_oci" = "true" ]
   [ "$es_url" = "registry.morrisons.site/charts" ]
-  [ "$es_username" = "ci" ]
+  [ "$es_username" = "k8s-argocd" ]
   [ -n "$es_password" ]
-  [ "$es_remote_key" = "homelab/k8s-argocd/zot-ci-password" ]
+  [ "$es_remote_key" = "homelab/service/k8s-zot/k8s-argocd/zot-pull" ]
   [ "$es_store_name" = "argocd-repo-creds-oci-openbao" ]
   [ "$es_store_kind" = "SecretStore" ]
 }
