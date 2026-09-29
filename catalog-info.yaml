@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: k8s-argocd
+  annotations:
+    github.com/project-slug: mattjmorrison-homelab/k8s-argocd
+spec:
+  type: gitops-engine
+  owner: mattjmorrison-homelab
+  system: argocd
